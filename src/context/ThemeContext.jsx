@@ -2,8 +2,19 @@ import { useState, useEffect } from 'react';
 import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import { CircularProgress, Box } from '@mui/material';
 import axios from 'axios';
-import { ThemeDataProvider } from '../contexts/ThemeDataContext'; // Importe o novo provedor
+import { ThemeDataProvider } from '../contexts/ThemeDataContext'; // O import fofo de ibagem
 
+ /*
+
+ Explicação
+  ThemeContext: Lida com tudo que o MUI pode alterar, como cores e tipografia
+  ThemeData: Lida com as imagens de fundo e tals
+
+  Vou selecionar as imagens que não são fotos de pizza e colocar numa pasta chamada Inteface e só guardar la
+
+  nao ta aplicado ainda
+
+ */
 
 const API_URL = "http://localhost:3001/theme"
 
