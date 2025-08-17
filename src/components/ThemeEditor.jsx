@@ -4,6 +4,12 @@ import { Box, TextField, Button, Typography, Paper, Grid } from '@mui/material';
 import { toast } from 'react-toastify';
 import { useThemeUpdate } from '../context/ThemeContext';
 
+/* 
+
+    Mano, acho que eu ferrei com a parte do cardapio com essas cores bizarras
+
+*/
+
 const API_URL = "http://localhost:3001/theme";
 
 function ThemeEditor({ onCancel }) {
@@ -28,7 +34,7 @@ function ThemeEditor({ onCancel }) {
         fetchCurrentTheme();
     }, []);
 
-    // 2. Funções para lidar com mudanças nos inputs do formulário
+    // Funções para lidar com mudanças nos inputs do formulário
     const handlePaletteChange = (colorName, value) => {
         setThemeData(prev => ({
             ...prev,
@@ -50,16 +56,14 @@ function ThemeEditor({ onCancel }) {
         }));
     };
 
-    // 3. Função para salvar os dados na API
+    // Função para salvar os dados na API
     const handleSaveChanges = async () => {
         try {
             await axios.put(API_URL, themeData);
             toast.success("Tema atualizado com sucesso! A página será recarregada para aplicar as mudanças.");
-            // Recarrega a página para que o ThemeContext busque os novos dados.
-            // Uma abordagem mais avançada é explicada no Passo 3.
             await refetchTheme(); 
             onCancel();  // Fecha o editor após salvar
-            
+
         } catch (error) {
             toast.error("Erro ao salvar o tema.");
             console.error(error);
