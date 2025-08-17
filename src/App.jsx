@@ -5,7 +5,7 @@ import { CarrinhoProvider } from './context/CarrinhoContext';
 import { AuthProvider } from './context/AuthContext';
 
 
-import { ThemeProvider } from '@mui/material/styles';
+import ThemeProvider from './context/ThemeContext'; 
 import CssBaseline from '@mui/material/CssBaseline'; // Reseta o CSS padrão do navegador
 import theme from './theme/theme.jsx'; // Importa o seu tema
 import { ToastContainer } from 'react-toastify';
@@ -18,7 +18,7 @@ import AppRoutes from './routes/AppRoutes'
 function App() {
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider>
       <CssBaseline />
         <AuthProvider>
           <ProdutosProvider>

@@ -1,13 +1,10 @@
-import React from 'react'
+
 import { useState } from 'react';
 import '../components/PizzaCard.css'
 import { toast,  ToastContainer } from 'react-toastify';
-import { Paper, Box, Typography, TextField, Select, MenuItem, Button, Card , Container} from '@mui/material';
-import { ProdutosProvider, useProdutos } from '../context/ProdutosContext';
+import { TextField, Select, MenuItem, Button, Card , Container} from '@mui/material';
+import { useProdutos } from '../context/ProdutosContext';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
-import Tooltip from '@mui/material/Tooltip'; 
-
-
 
 const AttProduto = () => {
 

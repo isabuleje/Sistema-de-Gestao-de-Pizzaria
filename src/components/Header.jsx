@@ -95,7 +95,7 @@ const Header = () => {
               },
             }}
           >
-            <LockIcon sx = {{ xs: '30px', md: '50px' }}  />
+            <LockIcon sx = {{ xs: '40px', md: '60px' }}  />
           </IconButton>
       </Box>
     </Toolbar>

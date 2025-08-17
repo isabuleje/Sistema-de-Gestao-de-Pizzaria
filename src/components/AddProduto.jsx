@@ -7,7 +7,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const AddProduto = ({ onCancel }) => {
   const { adicionarProduto, setAdicionar } = useProdutos();
-  const navigate = useNavigate();
 
   const [novoProduto, setNovoProduto] = useState({
     title: "",
@@ -114,11 +113,14 @@ const AddProduto = ({ onCancel }) => {
           onDrop={handleDrop}
           onDragOver={(e) => e.preventDefault()}
           sx={{
-            border: "2px dashed gray",
+            border: `2px dashed ${theme.palette.divider}`,
             padding: 2,
             textAlign: "center",
             marginTop: 1,
-            minHeight: 80
+            minHeight: 80,
+            '&:hover': {
+              borderColor: theme.palette.primary.main,
+            }
           }}
         >
           {novoProduto.image ? (

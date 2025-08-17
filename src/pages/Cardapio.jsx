@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import { useState } from 'react'
 import { useProdutos } from "../context/ProdutosContext";
 import Footer from '../components/Footer'
+import { useThemeData } from '../context/ThemeDataContext.jsx';
 
 import { Container, Box, Button, Typography, Paper, Grid, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
@@ -15,6 +16,7 @@ const Cardapio = () => {
     { nome: 'Família', preco: 'R$ 130,99' },
   ];
 
+  const { images } = useThemeData(); //pra usar ibagens
   const { produtos, ingredientes, categorias } = useProdutos();
 
   const [mostrarFiltrosIng, setMostrarFiltrosIng] = useState(false);
@@ -43,7 +45,7 @@ const Cardapio = () => {
   const bebidasAgua = produtos.filter(p => p.category === "bebida" && p.subcategory === "água");
 
   return (
-    <Box sx={{ backgroundImage: 'url("images/madeira.jpg")', minHeight: '100vh' }}>
+    <Box sx={{ backgroundImage: `url(${images['fundo']})`, minHeight: '100vh' }}>
       <Header />
       {/* Principal aqui */}
       <Container maxWidth="90%" sx={{ py: 4 }}>
@@ -52,12 +54,6 @@ const Cardapio = () => {
             variant="contained"
             color="primary"
             size='large'
-            sx={{
-              backgroundColor: '#b32900',
-              '&:hover': {
-                backgroundColor: '#6c1305',
-              },
-            }}
             onClick={() => {
               setMostrarFiltrosIng(!mostrarFiltrosIng)
               if (mostrarFiltrosIng) {
@@ -72,12 +68,6 @@ const Cardapio = () => {
             variant="contained"
             color="primary"
             size='large'
-            sx={{
-              backgroundColor: '#b32900',
-              '&:hover': {
-                backgroundColor: '#6c1305',
-              },
-            }}
             onClick={() => {
               setMostrarFiltrosTipos(!mostrarFiltrosTipos);
               // Lógica de reset: se o filtro estiver sendo ocultado, reseta o valor
@@ -100,7 +90,7 @@ const Cardapio = () => {
                 value={ingredienteSelecionado}
                 label="Ingrediente"
                 variant='filled'
-                sx={{ backgroundColor: '#b32a00c3', }}
+                sx={{ backgroundColor: 'primary.light' }}
                 onChange={(e) => setIngredienteSelecionado(e.target.value)}
               >
                 <MenuItem value="">Todos</MenuItem>
@@ -123,7 +113,7 @@ const Cardapio = () => {
                 labelId="tipo-label"
                 value={tipoSelecionado}
                 label="Tipo"
-                sx={{ backgroundColor: '#b32a00c3' }}
+                sx={{ backgroundColor: 'primary.light' }}
                 onChange={(e) => setTipoSelecionado(e.target.value)}
               >
                 <MenuItem value="">Todos</MenuItem>
@@ -143,13 +133,13 @@ const Cardapio = () => {
               variant="h4"
               component="h2"
               sx={{
-                textAlign: 'center',
-                color: 'rgb(245, 234, 227)',
-                backgroundColor: '#ffa221',
+                border: (theme) => `2px solid ${theme.palette.primary.dark}`,
+                color: 'primary.contrastText',
                 padding: '10px',
-                borderRadius: '30px',
-                fontWeight: 'bold',
-                textShadow: '1px 1px #421a0e'
+                textAlign: 'center',
+                backgroundColor: 'primary.main',
+                textShadow: '2px 2px #421a0e', // Pode ser mantido ou customizado
+                borderRadius: '5px'
               }}
             >
               Pizzas filtradas
@@ -170,13 +160,13 @@ const Cardapio = () => {
               variant="h4"
               component="h2"
               sx={{
-                textAlign: 'center',
-                color: 'rgb(245, 234, 227)',
-                backgroundColor: '#ffa221',
+                border: (theme) => `2px solid ${theme.palette.primary.dark}`,
+                color: 'primary.contrastText',
                 padding: '10px',
-                borderRadius: '30px',
-                fontWeight: 'bold',
-                textShadow: '1px 1px #421a0e'
+                textAlign: 'center',
+                backgroundColor: 'primary.main',
+                textShadow: '2px 2px #421a0e', // Pode ser mantido ou customizado
+                borderRadius: '5px'
               }}
             >
               Tipos filtrados
@@ -194,12 +184,12 @@ const Cardapio = () => {
         {/* Pizza aqui */}
         <Box sx={{ mt: 4 }}>
           <Typography variant="h3" component="h1" sx={{
-            border: '2px solid #4f2b09',
-            color: 'rgb(245, 234, 227)',
+            border: (theme) => `2px solid ${theme.palette.primary.dark}`,
+            color: 'primary.contrastText',
             padding: '10px',
             textAlign: 'center',
-            backgroundColor: '#92041eff',
-            textShadow: '2px 2px #421a0e',
+            backgroundColor: 'primary.main',
+            textShadow: '2px 2px #421a0e', // Pode ser mantido ou customizado
             borderRadius: '5px'
           }}>
             Pizzas
@@ -214,15 +204,15 @@ const Cardapio = () => {
                     sx={{
                       p: 2,
                       textAlign: 'center',
-                      backgroundColor: '#b32900',
-                      border: '1px solid #4f2b09',
+                      backgroundColor: 'primary.main',
+                      border: (theme) => `1px solid ${theme.palette.primary.dark}`,
                       transition: 'transform 0.3s',
                       '&:hover': {
                         transform: 'scale(1.05)',
                       },
                     }}
                     elevation={4}>
-                    <Typography variant="h5" sx={{ color: 'white' }}>
+                    <Typography variant="h5" sx={{ color: 'primary.contrastText' }}>
                       {item.nome}
                     </Typography>
                     <Typography
@@ -230,7 +220,7 @@ const Cardapio = () => {
                       sx={{
                         mt: 1,
                         textDecoration: 'underline',
-                        color: 'white',
+                        color: 'primary.contrastText',
                       }}
                     >
                       {item.preco}
@@ -246,12 +236,12 @@ const Cardapio = () => {
         <Box sx={{ mt: 4 }}>
           <Typography variant="h4" component="h2" sx={{
             textAlign: 'center',
-            color: 'rgb(248, 230, 220)',
-            backgroundColor: '#feb710ee ',
+            color: 'secondary.contrastText',
+            backgroundColor: 'secondary.main',
             padding: '10px',
             borderRadius: '30px',
             textShadow: '1px 1px #421a0e',
-            border: '1px solid #4f2b09'
+            border: (theme) => `1px solid ${theme.palette.secondary.dark}`
           }}>
             Pizzas salgadas
           </Typography>
@@ -267,12 +257,12 @@ const Cardapio = () => {
         <Box sx={{ mt: 4 }}>
           <Typography variant="h4" component="h2" sx={{
             textAlign: 'center',
-            color: 'rgb(248, 230, 220)',
-            backgroundColor: '#feb710ee  ',
+            color: 'secondary.contrastText',
+            backgroundColor: 'secondary.main',
             padding: '10px',
-            border: '1px solid #4f2b09',
             borderRadius: '30px',
-            textShadow: '1px 1px #421a0e'
+            textShadow: '1px 1px #421a0e',
+            border: (theme) => `1px solid ${theme.palette.secondary.dark}`
           }}>
             Pizzas doces
           </Typography>
@@ -287,12 +277,12 @@ const Cardapio = () => {
 
         <Box sx={{ mt: 4 }}>
           <Typography variant="h3" component="h1" sx={{
-            color: 'rgb(245, 234, 227)',
+            border: (theme) => `2px solid ${theme.palette.primary.dark}`,
+            color: 'primary.contrastText',
             padding: '10px',
             textAlign: 'center',
-            border: '1px solid #4f2b09',
-            backgroundColor: '#92041eff',
-            textShadow: '2px 2px #421a0e',
+            backgroundColor: 'primary.main',
+            textShadow: '2px 2px #421a0e', // Pode ser mantido ou customizado
             borderRadius: '5px'
           }}>
             Bebidas
@@ -302,12 +292,12 @@ const Cardapio = () => {
         <Box sx={{ mt: 4 }}>
           <Typography variant="h4" component="h2" sx={{
             textAlign: 'center',
-            color: 'rgb(248, 230, 220)',
-            backgroundColor: '#feb710ee  ',
+            color: 'secondary.contrastText',
+            backgroundColor: 'secondary.main',
             padding: '10px',
             borderRadius: '30px',
-            border: '1px solid #4f2b09',
-            textShadow: '1px 1px #421a0e'
+            textShadow: '1px 1px #421a0e',
+            border: (theme) => `1px solid ${theme.palette.secondary.dark}`
           }}>
             Água
           </Typography>
@@ -323,12 +313,12 @@ const Cardapio = () => {
         <Box sx={{ mt: 4 }}>
           <Typography variant="h4" component="h2" sx={{
             textAlign: 'center',
-            color: 'rgb(248, 230, 220)',
-            backgroundColor: '#feb710ee  ',
+            color: 'secondary.contrastText',
+            backgroundColor: 'secondary.main',
             padding: '10px',
             borderRadius: '30px',
-            border: '1px solid #4f2b09',
-            textShadow: '1px 1px #421a0e'
+            textShadow: '1px 1px #421a0e',
+            border: (theme) => `1px solid ${theme.palette.secondary.dark}`
           }}>
             Refrigerante
           </Typography>
@@ -344,12 +334,12 @@ const Cardapio = () => {
         <Box sx={{ mt: 4 }}>
           <Typography variant="h4" component="h2" sx={{
             textAlign: 'center',
-            color: 'rgb(248, 230, 220)',
-            backgroundColor: '#feb710ee  ',
+            color: 'secondary.contrastText',
+            backgroundColor: 'secondary.main',
             padding: '10px',
             borderRadius: '30px',
-            border: '1px solid #4f2b09',
-            textShadow: '1px 1px #421a0e'
+            textShadow: '1px 1px #421a0e',
+            border: (theme) => `1px solid ${theme.palette.secondary.dark}`
           }}>
             Vinho
           </Typography>
