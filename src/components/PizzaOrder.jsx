@@ -188,7 +188,7 @@ const PizzaOrder = () => {
                 fontSize: 20,
                 
               }}>
-                Selecione o tamanho da pizza:
+                Quantas pizzas você quer?
             </Typography>
 
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, justifyContent: 'center', mt: 2 }}>

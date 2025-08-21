@@ -178,12 +178,12 @@
   ],
   "theme": {
     "palette": {
-      "primary": "#13d5ea",
-      "secondary": "#4853d9",
-      "error": "#ff80c0",
-      "warning": "#ff8000",
-      "info": "#ff00ff",
-      "success": "#8080ff"
+      "primary": "#b62191",
+      "secondary": "#3fe243",
+      "error": "#ff8080",
+      "warning": "#0bf474",
+      "info": "#4144be",
+      "success": "#5ac058"
     },
     "typography": {
       "fontFamily": [
