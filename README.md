@@ -1,5 +1,5 @@
 
-# Sistema de Gestão de uma Pizzaria
+# Sistema de Gestão de uma Pizzaria 2.0
 
 ## Objetivo:
 Desenvolver uma aplicação web para uma pizzaria, simulando um sistema real de pedidos, comandas, entregas e administração, utilizando React + React Router + Context API + Hooks.
